@@ -32,7 +32,7 @@ docker build -t ghcr.io/infinityofspace/ente-server .
 ```commandline
 git clone https://github.com/ente-io/ente.git
 git clone https://github.com/infinityofspace/ente-docker.git
-cp -r ente-docker/web ente/web
+cp -r ente-docker/web/* ente/web
 cd ente/web
 docker build -t ghcr.io/infinityofspace/ente-web .
 ```

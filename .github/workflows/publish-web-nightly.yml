@@ -20,6 +20,9 @@ jobs:
         with:
           path: code
 
+      - name: copy custom web dir to upstream dir
+        run: cp -r code/web/* upstream-code/web
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
 
@@ -43,4 +46,4 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           context: upstream-code/web
-          file: code/web/Dockerfile
+          file: upstream-code/web/Dockerfile
