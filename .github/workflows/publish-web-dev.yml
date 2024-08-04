@@ -1,0 +1,50 @@
+name: build and publish web docker dev
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - dev
+
+jobs:
+  publish-server-docker-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout upstream code
+        uses: actions/checkout@v4
+        with:
+          path: upstream-code
+          repository: "ente-io/ente"
+
+      - name: checkout code
+        uses: actions/checkout@v4
+        with:
+          path: code
+
+      - name: copy custom web dir to upstream dir
+        run: cp -r code/web upstream-code/web
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ secrets.GH_USERNAME }}
+          password: ${{ secrets.GH_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          push: true
+          tags: |
+            ghcr.io/${{ secrets.GH_USERNAME }}/ente-web:dev
+          platforms: linux/amd64,linux/arm64/v8
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          context: upstream-code/web
+          file: Dockerfile
