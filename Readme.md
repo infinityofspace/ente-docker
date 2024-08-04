@@ -34,6 +34,7 @@ git clone https://github.com/ente-io/ente.git
 git clone https://github.com/infinityofspace/ente-docker.git
 cp -r ente-docker/web/* ente/web
 cd ente/web
+git submodule update --init --recursive
 docker build -t ghcr.io/infinityofspace/ente-web .
 ```
 

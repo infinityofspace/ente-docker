@@ -24,6 +24,9 @@ jobs:
       - name: copy custom web dir to upstream dir
         run: cp -r code/web/* upstream-code/web
 
+      - name: fetch git submodules
+        run: cd upstream-code/web && git submodule update --init --recursive
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
 
