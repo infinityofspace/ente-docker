@@ -44,4 +44,4 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           context: upstream-code/server
-          file: Dockerfile
+          file: upstream-code/server/Dockerfile
