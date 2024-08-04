@@ -15,9 +15,9 @@ COPY --from=ente-builder /app/apps/photos/out /usr/share/nginx/html
 COPY nginx/default.conf /etc/nginx/conf.d/default.conf
 
 ARG ENDPOINT="http://localhost:8080"
-ENV ENDPOINT "$ENDPOINT"
+ENV ENDPOINT="$ENDPOINT"
 ARG ALBUMS_ENDPOINT="http://localhost:8082"
-ENV ALBUMS_ENDPOINT "$ALBUMS_ENDPOINT"
+ENV ALBUMS_ENDPOINT="$ALBUMS_ENDPOINT"
 
 COPY replace_ente_endpoints.sh /docker-entrypoint.d/replace_ente_endpoints.sh
 
