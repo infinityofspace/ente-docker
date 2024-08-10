@@ -12,19 +12,23 @@ jobs:
     steps:
       - name: get the tag name
         id: get_tag
-        run: echo ::set-output name=TAG::$(echo $GITHUB_REF | cut -d / -f 3)
+        run: echo ::set-output name=TAG::$(echo $GITHUB_REF | cut -d / -f 2)
+
+      - name: checkout code
+        uses: actions/checkout@v4
+        with:
+          path: code
+
+      - name: get commit hash for upstream code
+        id: get_commit_hash
+        run: echo ::set-output name=UPSTREAM_COMMIT::$(cat web/commit.txt)
 
       - name: checkout upstream code
         uses: actions/checkout@v4
         with:
           path: upstream-code
           repository: "ente-io/ente"
-          ref: ${{ steps.get_tag.outputs.TAG }}
-
-      - name: checkout code
-        uses: actions/checkout@v4
-        with:
-          path: code
+          ref: ${{ steps.get_commit_hash.outputs.UPSTREAM_COMMIT }}
 
       - name: copy custom web dir to upstream dir
         run: cp -r code/web/* upstream-code/web
