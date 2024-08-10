@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: get the tag name
         id: get_tag
-        run: echo ::set-output name=TAG::$(echo $GITHUB_REF | cut -d / -f 2)
+        run: echo ::set-output name=TAG::$(echo $GITHUB_REF | cut -d / -f 3)
 
       - name: checkout code
         uses: actions/checkout@v4
