@@ -1,5 +1,8 @@
 # ente-docker
 
+[![Server Nightly Build Status](https://img.shields.io/github/actions/workflow/status/infinityofspace/ente-docker/publish-server-nightly.yml?style=for-the-badge&label=server+nightly+builds)](https://github.com/infinityofspace/ente-docker/actions/workflows/publish-server-nightly.yml)
+[![Web Nightly Build Status](https://img.shields.io/github/actions/workflow/status/infinityofspace/ente-docker/publish-web-nightly.yml?style=for-the-badge&label=web+nightly+builds)](https://github.com/infinityofspace/ente-docker/actions/workflows/publish-web-nightly.yml)
+
 ## About
 
 This project offers prebuild Docker images from the ente server (so called museum) and web app, as there are no official prebuild Docker images
