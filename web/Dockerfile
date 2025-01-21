@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM node:21-bookworm-slim as ente-builder
+FROM node:22-bookworm-slim as ente-builder
 
 WORKDIR /app
 RUN apt update && apt install -y ca-certificates && rm -rf /var/lib/apt/lists/*
@@ -10,7 +10,7 @@ ENV NEXT_PUBLIC_ENTE_ENDPOINT=DOCKER_RUNTIME_REPLACE_ENDPOINT
 ENV NEXT_PUBLIC_ENTE_ALBUMS_ENDPOINT=DOCKER_RUNTIME_REPLACE_ALBUMS_ENDPOINT
 RUN yarn build
 
-FROM nginx:1.25-alpine-slim
+FROM nginx:1.27-alpine-slim
 COPY --from=ente-builder /app/apps/photos/out /usr/share/nginx/html
 COPY nginx/default.conf /etc/nginx/conf.d/default.conf
 
