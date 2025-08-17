@@ -1,5 +1,10 @@
 # ente-docker
 
+---
+*NOTE: This repo is deprecated, since there are now up to date prebuild docker image for the web and server components. Please refer to the official [web docs](https://github.com/ente-io/ente/blob/main/web/docs/docker.md) and [server docs](https://github.com/ente-io/ente/blob/main/server/docs/quickstart.md).*
+
+---
+
 [![Server Nightly Build Status](https://img.shields.io/github/actions/workflow/status/infinityofspace/ente-docker/publish-server-nightly.yml?style=for-the-badge&label=server+nightly+builds)](https://github.com/infinityofspace/ente-docker/actions/workflows/publish-server-nightly.yml)
 [![Web Nightly Build Status](https://img.shields.io/github/actions/workflow/status/infinityofspace/ente-docker/publish-web-nightly.yml?style=for-the-badge&label=web+nightly+builds)](https://github.com/infinityofspace/ente-docker/actions/workflows/publish-web-nightly.yml)
 
